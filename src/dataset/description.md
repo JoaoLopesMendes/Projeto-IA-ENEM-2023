@@ -1,10 +1,10 @@
-# 📊 Dataset: Microdados ENEM 2023
+# Dataset: Microdados ENEM 2023
 
 Este projeto utiliza os microdados oficiais do Exame Nacional do Ensino Médio (ENEM) referentes ao ano de 2023. O conjunto de dados é mantido e publicado anualmente pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP).
 
 ---
 
-## 1. 📥 Origem e Acesso
+## 1. Origem e Acesso
 
 Os dados brutos foram extraídos do Portal de Dados Abertos do Governo Federal.
 
@@ -13,7 +13,7 @@ Os dados brutos foram extraídos do Portal de Dados Abertos do Governo Federal.
 
 ---
 
-## 2. ⚙️ Estratégia de Amostragem e Compactação
+## 2. Estratégia de Amostragem e Compactação
 
 Devido à volumetria do arquivo original (~2GB e ~3,9 milhões de registros), foi aplicado um pipeline de engenharia de dados para gerar o arquivo `amostra_enem_n1.csv` disponível neste repositório:
 
@@ -31,7 +31,7 @@ Devido à volumetria do arquivo original (~2GB e ~3,9 milhões de registros), fo
 
 ---
 
-## 3. 📚 Dicionário de Atributos
+## 3. Dicionário de Atributos
 
 | Atributo           | Descrição                          | Observação |
 |------------------|----------------------------------|----------|
@@ -50,7 +50,7 @@ Devido à volumetria do arquivo original (~2GB e ~3,9 milhões de registros), fo
 
 ---
 
-## 4. 🧹 Pré-processamento e Limpeza
+## 4. Pré-processamento e Limpeza
 
 Para análise exploratória (EDA) e modelagem preditiva, foram aplicadas as seguintes transformações:
 
@@ -62,14 +62,3 @@ Para análise exploratória (EDA) e modelagem preditiva, foram aplicadas as segu
 
 - **Normalização:**  
   Preparação dos dados para algoritmos de machine learning (Scikit-Learn)
-
----
-
-## 📌 Notas de Versão
-
-- **Versão:** 1.0 (Entrega N1)  
-- **Estado:** Amostra compactada para desenvolvimento  
-- **Observação:**  
-  O pipeline completo para processamento do dataset integral está disponível no diretório `/scripts`
-
----
