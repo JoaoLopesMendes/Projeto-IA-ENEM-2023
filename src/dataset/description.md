@@ -8,7 +8,7 @@ Este projeto utiliza os microdados oficiais do Exame Nacional do Ensino Médio (
 
 Os dados brutos foram extraídos do Portal de Dados Abertos do Governo Federal.
 
-- **Fonte:** INEP - Microdados do ENEM (https://download.inep.gov.br/microdados/microdados_enem_2023.zip) 
+- **Fonte:** INEP - Microdados do ENEM (https://download.inep.gov.br/microdados/microdados_enem_2023.zip) (obs: não conseguimos upar o dataset no github devido ao seu tamanho)
 - **Licença:** Dados abertos de uso público, em conformidade com a Lei Geral de Proteção de Dados (LGPD), com dados anonimizados.
 
 ---
