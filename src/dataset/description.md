@@ -13,52 +13,48 @@ Os dados brutos foram extraídos do Portal de Dados Abertos do Governo Federal.
 
 ---
 
-## 2. Estratégia de Amostragem e Compactação
+## 2. Dicionário de Variáveis
 
-Devido à volumetria do arquivo original (~2GB e ~3,9 milhões de registros), foi aplicado um pipeline de engenharia de dados para gerar o arquivo `amostra_enem_n1.csv` disponível neste repositório:
 
-- **Filtragem de Presença:**  
-  Foram mantidos apenas candidatos presentes em todos os dias de prova:  
-  `TP_PRESENCA_CN`, `TP_PRESENCA_CH`, `TP_PRESENCA_LC`, `TP_PRESENCA_MT` == 1
+| Variável | Descrição |
+|---|---|
+| NU_INSCRICAO | Número de inscrição do participante |
+| TP_FAIXA_ETARIA | Faixa etária do participante |
+| TP_SEXO | Sexo do participante |
+| TP_ESTADO_CIVIL | Estado civil |
+| TP_COR_RACA | Cor/raça autodeclarada |
+| TP_NACIONALIDADE | Nacionalidade |
+| TP_ST_CONCLUSAO | Situação de conclusão do ensino médio |
+| TP_ANO_CONCLUIU | Ano de conclusão do ensino médio |
+| TP_ESCOLA | Tipo de escola |
+| TP_ENSINO | Tipo de ensino |
+| IN_TREINEIRO | Indica se o participante é treineiro |
+| CO_MUNICIPIO_ESC | Código do município da escola |
+| NO_MUNICIPIO_ESC | Nome do município da escola |
+| CO_UF_ESC | Código da UF da escola |
+| SG_UF_ESC | Sigla da UF da escola |
+| TP_DEPENDENCIA_ADM_ESC | Dependência administrativa da escola |
+| TP_LOCALIZACAO_ESC | Localização da escola |
+| TP_SIT_FUNC_ESC | Situação de funcionamento da escola |
+| TP_PRESENCA_CN | Presença em Ciências da Natureza |
+| TP_PRESENCA_CH | Presença em Ciências Humanas |
+| TP_PRESENCA_LC | Presença em Linguagens e Códigos |
+| TP_PRESENCA_MT | Presença em Matemática |
+| NU_NOTA_CN | Nota de Ciências da Natureza |
+| NU_NOTA_CH | Nota de Ciências Humanas |
+| NU_NOTA_LC | Nota de Linguagens e Códigos |
+| NU_NOTA_MT | Nota de Matemática |
+| NU_NOTA_REDACAO | Nota da Redação |
+| Q001 | Escolaridade do pai |
+| Q002 | Escolaridade da mãe |
+| Q005 | Quantidade de pessoas na residência |
+| Q006 | Faixa de renda familiar |
+| Q024 | Possui computador em casa |
+| Q025 | Possui acesso à internet |
 
-- **Redução de Dimensionalidade:**  
-  Seleção apenas das colunas relevantes ao estudo socioeconômico (questionário + notas)
+## Observações
 
-- **Amostragem Aleatória:**  
-  Extração de 100.000 registros  
-  → Mantém representatividade estatística  
-  → Reduz tamanho para < 25MB (melhor portabilidade)
+- As variáveis iniciadas com `TP_` representam categorias/tipos definidos pelo INEP.
+- As variáveis iniciadas com `NU_` representam valores numéricos, como notas.
+- As variáveis iniciadas com `Q` correspondem ao questionário socioeconômico do ENEM.
 
----
-
-## 3. Dicionário de Atributos
-
-| Atributo           | Descrição                          | Observação |
-|------------------|----------------------------------|----------|
-| NU_INSCRICAO     | Identificador da inscrição       | Anonimizado |
-| TP_ESCOLA        | Tipo de escola do Ensino Médio   | 1: Não informado; 2: Pública; 3: Privada |
-| Q001             | Escolaridade do pai              | A (Nenhuma) a H (Pós-graduação) |
-| Q002             | Escolaridade da mãe              | A (Nenhuma) a H (Pós-graduação) |
-| Q006             | Renda mensal familiar            | A (Sem renda) a Q (> R$ 26.400) |
-| Q025             | Acesso à internet em casa        | A: Não; B: Sim |
-| NU_NOTA_CN       | Nota em Ciências da Natureza     | 0 a 1000 |
-| NU_NOTA_CH       | Nota em Ciências Humanas         | 0 a 1000 |
-| NU_NOTA_LC       | Nota em Linguagens e Códigos     | 0 a 1000 |
-| NU_NOTA_MT       | Nota em Matemática               | 0 a 1000 |
-| NU_NOTA_REDACAO  | Nota da redação                  | 0 a 1000 |
-| NOTA_MEDIA       | Média das 5 notas                | Variável calculada |
-
----
-
-## 4. Pré-processamento e Limpeza
-
-Para análise exploratória (EDA) e modelagem preditiva, foram aplicadas as seguintes transformações:
-
-- **Tratamento de Nulos:**  
-  Remoção de registros com notas ausentes ou dados socioeconômicos incompletos
-
-- **Mapeamento de Categorias:**  
-  Conversão das variáveis categóricas (letras) para valores descritivos e monetários (BRL)
-
-- **Normalização:**  
-  Preparação dos dados para algoritmos de machine learning (Scikit-Learn)
